@@ -15,10 +15,17 @@
 export const OWNER = {
     firstName: "Ryan",
     lastName:  "Locquiao",
+    initials:  "JRL",
 
-    tagline: "",
+    tagline: 
+        "CS & Software Engineering @ UW Bothell — building things at every layer " +
+        "of the stack, from ARM assembly to full-stack web platforms.",
 
-    bio: "",
+    bio: 
+        "CS & Software Engineering student at UW Bothell with roots at Mt. San Jacinto " +
+        "College. I write code at every level of abstraction — from buddy allocators in " +
+        "ARM assembly to Netflix-inspired web platforms. I care about systems that are " +
+        "fast, correct, and actually enjoyable to use.",
 
     location:  "Lynnwood, WA",
     email:     "ryanlocquiao16@gmail.com",

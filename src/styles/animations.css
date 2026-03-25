@@ -1,0 +1,28 @@
+.rv {
+    opacity: 0;
+    transform: translateY(36px);
+    transition: 
+        opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.rv.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.rv.d1 { transition-delay: 0.10s; }
+.rv.d2 { transition-delay: 0.22s; }
+.rv.d3 { transition-delay: 0.36s; }
+.rv.d4 { transition-delay: 0.50s; }
+.rv.d5 { transition-delay: 0.64s; }
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.25; }
+    50%      { opacity: 1; }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0; }
+}

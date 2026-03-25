@@ -1,121 +1,78 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import React, { useRef } from 'react';
 
-function App() {
-  const [count, setCount] = useState(0)
+/* -- Styles ----------------------------------------------- */
+import "./styles/global.css";
+import "./styles/animations.css";
+import "./styles/panels.css";
+
+/* -- Hooks ------------------------------------------------ */
+import { useCursor, useScrollSpy } from "./hooks/usePortfolio";
+
+/* -- Data ------------------------------------------------- */
+import { PROJECTS, NAV_LABELS, OWNER } from './data/portfolioData';
+
+/* -- Components ------------------------------------------- */
+import Cursor                 from './components/Cursor';
+import { Navbar, ScrollDots } from './components/Navigation';
+import HeroPanel              from './components/HeroPanel';
+import ProjectPanel           from './components/ProjectPanel';
+import AboutPanel             from './components/AboutPanel';
+
+/* --------------------------------------------------------------------------
+   Total Panel Count: 1 hero + N projects + 1 about
+   -------------------------------------------------------------------------- */
+const PANEL_COUNT = 1 + PROJECTS.length + 1;
+
+export default function App() {
+  const scrollRef = useRef(null);
+  const cursor = useCursor();
+  const { activeIndex, revealed, scrollTo, panelRefs } = useScrollSpy(PANEL_COUNT, scrollRef);
 
   return (
     <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+      <Cursor x={cursor.x} y={cursor.y} big={cursor.big} />
 
-      <div className="ticks"></div>
+      <Navbar 
+        labels={NAV_LABELS}
+        activeIndex={activeIndex}
+        scrollTo={scrollTo}
+      />
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+      <ScrollDots
+        count={PANEL_COUNT}
+        activeIndex={activeIndex}
+        scrollTo={scrollTo}
+      />
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
+      <footer className="footer">
+        <span>{OWNER.firstName} {OWNER.lastName} · Portfolio</span>
+        <span>{OWNER.location} · {new Date().getFullYear}</span>
+      </footer>
+
+      <div className="scroller" ref={scrollRef}>
+
+        <div ref={panelRefs(0)}>
+          <HeroPanel revealed={revealed.has(0)} />
+        </div>
+
+        {PROJECTS.map((project, i) => {
+          const panelIndex = i + 1;
+          return (
+            <div key={project.title} ref={panelRefs(panelIndex)}>
+              <ProjectPanel
+                project={project}
+                index={i}
+                revealed={revealed.has(panelIndex)}
+              />
+            </div>
+          );
+        })}
+
+        <div ref={panelRefs(PANEL_COUNT - 1)}>
+          <AboutPanel revealed={revealed.has(PANEL_COUNT - 1)} />
+        </div>
+
+      </div>
     </>
-  )
+  );
 }
-
-export default App

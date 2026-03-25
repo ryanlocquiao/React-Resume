@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;900&family=Lora:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@300;400;500&display=swap');
+
+:root {
+    --black:     #060608;
+    --offwhite:  #ede8df;
+    --bone:      #b8b0a0;
+    --red:       #c1291a;
+    --red-dim:   rgba(193, 41, 26, 0.18);
+    --red-glow:  rgba(193, 41, 26, 0.35);
+
+    --ff-display: 'Barlow Condensed', sans-serif;
+    --ff-body:    'Lora', serif;
+     --ff-mono:    'IBM Plex Mono', monospace;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background: var(--black);
+    color: var(--offwhite);
+    font-family: var(--ff-body);
+    cursor: none;
+}
