@@ -26,7 +26,7 @@ export function Navbar({ labels, activeIndex, scrollTo }) {
                 color: "var(--offwhite)",
             }}>
                 {OWNER.initials[0]}
-                <span style={{ color: "var(--red)" }}>.</span>
+                J<span style={{ color: "var(--red)" }}>.</span>R<span style={{ color: "var(--red)" }}>.</span>L
                 {OWNER.initials.slice(1)}
             </span>
 
