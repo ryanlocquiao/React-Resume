@@ -25,9 +25,7 @@ export function Navbar({ labels, activeIndex, scrollTo }) {
                 letterSpacing: "0.16rem",
                 color: "var(--offwhite)",
             }}>
-                {OWNER.initials[0]}
                 J<span style={{ color: "var(--red)" }}>.</span>R<span style={{ color: "var(--red)" }}>.</span>L
-                {OWNER.initials.slice(1)}
             </span>
 
             <div style={{ display: "flex", gap: "0.5rem"}}>
