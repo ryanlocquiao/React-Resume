@@ -17,6 +17,8 @@ export default function HeroPanel({ revealed }) {
                 <h1 className={`${rv("d1")} hero-name`}>
                     {OWNER.firstName.toUpperCase()}
                     <br />
+                    {OWNER.middleName.toUpperCase()}
+                    <br />
                     <span className="last">{OWNER.lastName.toUpperCase()}</span>
                 </h1>
                 <p className={`${rv("d2")} hero-tagline`}>
