@@ -31,14 +31,14 @@ export function Navbar({ labels, activeIndex, scrollTo }) {
             </span>
 
             <div style={{ display: "flex", gap: "0.5rem"}}>
-                {labels.map((label, i) => {
+                {labels.map((label, i) => (
                     <NavPill
                         key={label}
                         label={label}
                         active={activeIndex === i}
                         onClick={() => scrollTo(i)}
                     />
-                })}
+                ))}
             </div>
         </nav>
     );
@@ -54,7 +54,7 @@ function NavPill({ label, active, onClick }) {
                 letterSpacing:  "0.18em",
                 textTransform:  "uppercase",
                 background:     active ? "var(--red-dim)" : "transparent",
-                border:         `1px solid ${active ? "var(--red" : "rgba(237, 232, 223, 0.15"}`,
+                border:         `1px solid ${active ? "var(--red)" : "rgba(237, 232, 223, 0.15)"}`,
                 color:          active ? "var(--offwhite)" : "var(--bone)",
                 padding:        "0.28rem 0.8rem",
                 borderRadius:   "100px",
@@ -79,7 +79,7 @@ export function ScrollDots({ count, activeIndex, scrollTo }) {
             flexDirection:  "column",
             gap:            "0.7rem",
         }}>
-            {Array.from({ length: count }, (_, i) => {
+            {Array.from({ length: count }, (_, i) => (
                 <div key={i}
                 data-hover
                 style={{
@@ -88,11 +88,11 @@ export function ScrollDots({ count, activeIndex, scrollTo }) {
                     borderRadius:   "50%",
                     cursor:         "none",
                     transition:     "background 0.3s, transform 0.3s",
-                    background:     active === i ? "var(--red)" : "rgba(237, 232, 223, 0.25",
-                    transform:      active === i ? "scale(1.55)" : "scale(1)",
+                    background:     activeIndex === i ? "var(--red)" : "rgba(237, 232, 223, 0.25)",
+                    transform:      activeIndex === i ? "scale(1.55)" : "scale(1)",
                 }}
                 />
-            })}
+            ))}
         </div>
     );
 }

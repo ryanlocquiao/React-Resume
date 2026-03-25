@@ -13,9 +13,10 @@
    Personal Info
    -------------------------------------------------------------------------- */
 export const OWNER = {
-    firstName: "Ryan",
-    lastName:  "Locquiao",
-    initials:  "JRL",
+    firstName:  "Jeric",
+    middleName: "Ryan",
+    lastName:   "Locquiao",
+    initials:   "JRL",
 
     tagline: 
         "CS & Software Engineering @ UW Bothell — building things at every layer " +

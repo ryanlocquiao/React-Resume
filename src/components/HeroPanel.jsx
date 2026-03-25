@@ -8,7 +8,7 @@ export default function HeroPanel({ revealed }) {
 
     return (
         <div className="panel">
-            <div className="bg" style={{ backgroundImage: `url('$HERO_BG')` }} />
+            <div className="bg" style={{ backgroundImage: `url('${HERO_BG}')` }} />
             <div className="overlay" />
             <div className="content" style={{ paddingBottom: "5rem" }}>
                 <p className={`${rv()} hero-eyebrow`}>

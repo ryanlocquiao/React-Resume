@@ -58,7 +58,9 @@ export default function AboutPanel({ revealed }) {
                 <h2 className={`${rv("d1")} about-headline`}>
                     {OWNER.firstName.toUpperCase()}
                     <br />
-                    <span style={{ color : "var(--red" }}>
+                    {OWNER.middleName.toUpperCase()}
+                    <br />
+                    <span style={{ color : "var(--red)" }}>
                         {OWNER.lastName.toLocaleUpperCase()}
                     </span>
                 </h2>
@@ -83,7 +85,7 @@ export default function AboutPanel({ revealed }) {
                     <a href={OWNER.linkedin} className="alink" target="_blank" rel="noreferrer">
                         LinkedIn
                     </a>
-                    <a href={`mailto:${OWNER.email}`} className="alink" download>
+                    <a href={OWNER.resumeUrl} className="alink" download>
                         Resume ↓
                     </a>
                 </div>

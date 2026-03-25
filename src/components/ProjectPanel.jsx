@@ -8,7 +8,7 @@ export default function ProjectPanel({ project, index, revealed }) {
         <div className="panel">
             <div 
                 className="proj-bar"
-                style={{ "---progress": `${project.progress}%` }}
+                style={{ "--progress": `${project.progress}%` }}
             />
             <div 
                 className="bg"

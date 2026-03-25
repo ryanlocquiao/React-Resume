@@ -46,7 +46,7 @@ export default function App() {
 
       <footer className="footer">
         <span>{OWNER.firstName} {OWNER.lastName} · Portfolio</span>
-        <span>{OWNER.location} · {new Date().getFullYear}</span>
+        <span>{OWNER.location} · {new Date().getFullYear()}</span>
       </footer>
 
       <div className="scroller" ref={scrollRef}>

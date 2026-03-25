@@ -12,7 +12,7 @@ export function useCursor() {
             }
         };
 
-        const handleOut = () => setCursor({...prev, big: false });
+        const handleOut = () => setCursor((prev) => ({...prev, big: false }));
 
         window.addEventListener("mousemove", handleMove);
         window.addEventListener("mouseover", handleOver);
